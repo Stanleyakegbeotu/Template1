@@ -227,54 +227,72 @@
 
 
         <!-- NEW: Product Specification Section -->
-        <section id="product-specifications" class="py-12 bg-gray-50 rounded-3xl p-8 md:p-12 my-12 reveal-on-scroll border overflow-hidden">
-            <h2 class="text-3xl font-extrabold text-gray-900 mb-8 text-center">Detailed Specifications</h2>
-            <div class="grid md:grid-cols-2 gap-10 items-start">
-                <!-- Left side: Text Specifications -->
-                <div class="space-y-4">
-                    <h3 class="text-2xl font-bold text-gray-800">Technical Details</h3>
-                    <ul class="list-disc list-inside space-y-3 text-gray-700 bg-white p-6 rounded-xl shadow-md border">
-                        <li><strong>Battery Capacity:</strong> 42000mAh / 155Wh Lithium-ion</li>
-                        <li><strong>AC Output:</strong> 220V, 150W (Modified Sine Wave)</li>
-                        <li><strong>DC Output:</strong> 9-12.5V / 10A (15A Max)</li>
-                        <li><strong>USB Ports:</strong> 2x USB 5V/2.1A, 1x USB QC3.0</li>
-                        <li><strong>Charging Time (Wall):</strong> Approx. 7-8 hours</li>
-                        <li><strong>Charging Time (Solar):</strong> Approx. 9-10 hours (with 60W panel)</li>
-                        <li><strong>Lifecycle:</strong> >500 cycles to 80%</li>
-                        <li><strong>Weight:</strong> 1.6 kg (3.5 lbs)</li>
-                        <li><strong>Dimensions:</strong> 186mm x 107mm x 180mm</li>
-                    </ul>
+        <section id="product-spec-section" class="py-12 bg-gray-50 rounded-3xl p-8 md:p-12 my-12 reveal-on-scroll shadow-lg">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-8 text-center">Detailed Product Specifications</h2>
+            <div class="grid md:grid-cols-2 gap-12 items-start max-w-6xl mx-auto">
+                <!-- Image Carousel -->
+                <div id="spec-carousel">
+                    <!-- Main Image Display Wrapper -->
+                    <div class="mb-4 overflow-hidden rounded-2xl shadow-lg border-4 border-white">
+                        <!-- Slider Track -->
+                        <div id="spec-slider-track" class="flex transition-transform duration-500 ease-in-out">
+                            <img src="https://placehold.co/600x500/e2e8f0/334155?text=Main+View" alt="Product Specification Image 1" class="w-full flex-shrink-0">
+                            <img src="https://placehold.co/600x500/e2e8f0/334155?text=Ports+View" alt="Product Specification Image 2" class="w-full flex-shrink-0">
+                            <img src="https://placehold.co/600x500/e2e8f0/334155?text=In-Use" alt="Product Specification Image 3" class="w-full flex-shrink-0">
+                            <img src="https://placehold.co/600x500/e2e8f0/334155?text=With+Panel" alt="Product Specification Image 4" class="w-full flex-shrink-0">
+                            <img src="https://placehold.co/600x500/e2e8f0/334155?text=Lifestyle" alt="Product Specification Image 5" class="w-full flex-shrink-0">
+                        </div>
+                    </div>
+                    <!-- Thumbnail Images -->
+                    <div class="grid grid-cols-5 gap-3">
+                        <img src="https://placehold.co/100x80/e2e8f0/334155?text=View+1" alt="Thumbnail 1" class="spec-thumb w-full cursor-pointer rounded-lg border-2 border-red-500 ring-2 ring-red-500 transition-all" data-src="https://placehold.co/600x500/e2e8f0/334155?text=Main+View">
+                        <img src="https://placehold.co/100x80/e2e8f0/334155?text=View+2" alt="Thumbnail 2" class="spec-thumb w-full cursor-pointer rounded-lg border-2 border-transparent hover:border-red-500 transition-all" data-src="https://placehold.co/600x500/e2e8f0/334155?text=Ports+View">
+                        <img src="https://placehold.co/100x80/e2e8f0/334155?text=View+3" alt="Thumbnail 3" class="spec-thumb w-full cursor-pointer rounded-lg border-2 border-transparent hover:border-red-500 transition-all" data-src="https://placehold.co/600x500/e2e8f0/334155?text=In-Use">
+                        <img src="https://placehold.co/100x80/e2e8f0/334155?text=View+4" alt="Thumbnail 4" class="spec-thumb w-full cursor-pointer rounded-lg border-2 border-transparent hover:border-red-500 transition-all" data-src="https://placehold.co/600x500/e2e8f0/334155?text=With+Panel">
+                        <img src="https://placehold.co/100x80/e2e8f0/334155?text=View+5" alt="Thumbnail 5" class="spec-thumb w-full cursor-pointer rounded-lg border-2 border-transparent hover:border-red-500 transition-all" data-src="https://placehold.co/600x500/e2e8f0/334155?text=Lifestyle">
+                    </div>
                 </div>
-
-                <!-- Right side: Media Placeholders -->
-                <div class="space-y-8">
-                    <!-- Image Placeholder -->
-                    <div class="flip-card aspect-square">
-                        <div id="spec-flip-card-inner" class="flip-card-inner shadow-2xl rounded-3xl">
-                            <div class="flip-card-front bg-white p-2">
-                                <img id="spec-flip-card-img-front" src="P7.webp" alt="Product Specification Image - Front" class="w-full h-full object-contain rounded-2xl">
-                            </div>
-                            <div class="flip-card-back bg-white p-2">
-                                <img id="spec-flip-card-img-back" src="S4.webp" alt="Product Specification Image - Back" class="w-full h-full object-contain rounded-2xl">
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Video Placeholder -->
-                    <div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-black">
-                        <video class="w-full h-full" controls poster="R1.webp" preload="metadata">
-                            <source src="V2.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <!-- NEW: Image Carousel under video -->
-                    <div id="spec-image-carousel" class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-xl border-4 border-white">
-                        <div id="spec-carousel-track" class="carousel-track h-full">
-                            <!-- Carousel images will be populated by JS -->
-                        </div>
-                        <div id="spec-carousel-indicators" class="carousel-indicators">
-                            <!-- Carousel indicators will be populated by JS -->
-                        </div>
-                    </div>
+                <!-- Specification List -->
+                <div class="space-y-4 text-gray-700">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Key Features & Specs</h3>
+                    <ul id="spec-list" class="space-y-4 bg-white p-6 rounded-xl shadow-md border">
+                        <li class="spec-item flex items-start opacity-0 transform translate-y-5 transition-all duration-500">
+                            <span class="text-xl mr-3 pt-0.5">🔋</span>
+                            <div><strong>Battery Capacity:</strong> 42000mAh / 155Wh Lithium-ion</div>
+                        </li>
+                        <li class="spec-item flex items-start opacity-0 transform translate-y-5 transition-all duration-500">
+                            <span class="text-xl mr-3 pt-0.5">🔌</span>
+                            <div><strong>AC Output:</strong> 220V, 150W (Modified Sine Wave)</div>
+                        </li>
+                        <li class="spec-item flex items-start opacity-0 transform translate-y-5 transition-all duration-500">
+                            <span class="text-xl mr-3 pt-0.5">⚡</span>
+                            <div><strong>DC Outputs:</strong> 3 x (9-12.5V / 10A, 15A Max)</div>
+                        </li>
+                        <li class="spec-item flex items-start opacity-0 transform translate-y-5 transition-all duration-500">
+                            <span class="text-xl mr-3 pt-0.5">📱</span>
+                            <div><strong>USB Outputs:</strong> 2 x (5V/2.1A), 1 x (5-9V/2A QC 3.0)</div>
+                        </li>
+                        <li class="spec-item flex items-start opacity-0 transform translate-y-5 transition-all duration-500">
+                            <span class="text-xl mr-3 pt-0.5">🏠</span>
+                            <div><strong>Charging Input (AC):</strong> 15V/2A (Approx. 7-8 hours)</div>
+                        </li>
+                        <li class="spec-item flex items-start opacity-0 transform translate-y-5 transition-all duration-500">
+                            <span class="text-xl mr-3 pt-0.5">☀️</span>
+                            <div><strong>Charging Input (Solar):</strong> 13V-25V (60W Panel Recommended)</div>
+                        </li>
+                        <li class="spec-item flex items-start opacity-0 transform translate-y-5 transition-all duration-500">
+                            <span class="text-xl mr-3 pt-0.5">🔄</span>
+                            <div><strong>Lifecycle:</strong> >500 charge cycles</div>
+                        </li>
+                        <li class="spec-item flex items-start opacity-0 transform translate-y-5 transition-all duration-500">
+                            <span class="text-xl mr-3 pt-0.5">📏</span>
+                            <div><strong>Dimensions:</strong> 186 x 107 x 180mm</div>
+                        </li>
+                        <li class="spec-item flex items-start opacity-0 transform translate-y-5 transition-all duration-500">
+                            <span class="text-xl mr-3 pt-0.5">⚖️</span>
+                            <div><strong>Weight:</strong> 1.6kg (3.5 lbs)</div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -529,14 +547,117 @@
     </div>
 
     <!-- NEW: Floating Cart/Top Button -->
-    <button id="floating-cart-btn" title="Go to Order Form" class="btn-pulse fixed bottom-5 right-5 bg-yellow-400/70 text-red-900 w-16 h-16 rounded-full shadow-lg flex items-center justify-center text-3xl z-[90] transform hover:scale-110 hover:bg-yellow-400 transition-all duration-300">
-    <button id="floating-cart-btn" title="Go to Order Form" class="btn-pulse fixed bottom-5 right-5 sm:right-5 bg-yellow-400/70 text-red-900 w-16 h-16 rounded-full shadow-lg flex items-center justify-center text-3xl z-[90] transform hover:scale-110 hover:bg-yellow-400 transition-all duration-300">
+    <a href="#final-order-form-section" id="floating-cart-btn" title="Go to Order Form" class="btn-pulse fixed bottom-5 right-5 sm:right-5 bg-yellow-400/70 text-red-900 w-16 h-16 rounded-full shadow-lg flex items-center justify-center text-3xl z-[90] transform hover:scale-110 hover:bg-yellow-400 transition-all duration-300 opacity-0 invisible">
         🛒
-    </button>
+    </a>
 
 
     <!-- JavaScript Logic -->
-   <script src="my.js"></script>
-   
+    <script src="my.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+             const floatingBtn = document.getElementById('floating-cart-btn');
+             const orderFormSection = document.getElementById('final-order-form-section');
+ 
+             if (!floatingBtn || !orderFormSection) {
+                 return;
+             }
+ 
+             // Use a state variable to track the button's function
+             let isBackToTopMode = false;
+ 
+             // --- NEW: Scroll listener to fade the button in/out ---
+             window.addEventListener('scroll', () => {
+                 // Show button after scrolling down 300px
+                 if (window.scrollY > 300) {
+                     floatingBtn.classList.remove('opacity-0', 'invisible');
+                 } else {
+                     floatingBtn.classList.add('opacity-0', 'invisible');
+                 }
+             }, { passive: true }); // Use passive for better scroll performance
+
+
+             // Handle the click with smooth scrolling
+             floatingBtn.addEventListener('click', (event) => {
+                 event.preventDefault(); // Prevent the default jump
+                 if (isBackToTopMode) {
+                     window.scrollTo({ top: 0, behavior: 'smooth' });
+                 } else {
+                     orderFormSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                 }
+             });
+ 
+             // Use IntersectionObserver to change the button's appearance and state
+             const observer = new IntersectionObserver((entries) => {
+                 const entry = entries[0];
+                 isBackToTopMode = entry.isIntersecting;
+                 floatingBtn.innerHTML = isBackToTopMode ? '⬆️' : '🛒';
+                 floatingBtn.title = isBackToTopMode ? 'Go to Top' : 'Go to Order Form';
+             }, { threshold: 0.1 });
+ 
+             observer.observe(orderFormSection);
+
+             // --- NEW: Product Spec Image Carousel Logic ---
+             const sliderTrack = document.getElementById('spec-slider-track');
+             const specThumbnails = document.querySelectorAll('.spec-thumb');
+             const carouselContainer = document.getElementById('spec-carousel');
+             let currentSpecIndex = 0;
+             let specInterval;
+
+             const changeSpecImage = (index) => {
+                 if (index < 0 || index >= specThumbnails.length) return;
+
+                 // Slide the track
+                 sliderTrack.style.transform = `translateX(-${index * 100}%)`;
+
+                 // Update active thumbnail style
+                 const thumb = specThumbnails[index];
+                 specThumbnails.forEach(t => t.classList.remove('border-red-500', 'ring-2', 'ring-red-500'));
+                 thumb.classList.add('border-red-500', 'ring-2', 'ring-red-500');
+                 currentSpecIndex = index;
+             };
+
+             const startSpecCarousel = () => {
+                 clearInterval(specInterval); // Clear any existing interval
+                 specInterval = setInterval(() => {
+                     let nextIndex = (currentSpecIndex + 1) % specThumbnails.length;
+                     changeSpecImage(nextIndex);
+                 }, 4000); // Change image every 4 seconds
+             };
+
+             // Handle manual clicks
+             specThumbnails.forEach((thumb, index) => {
+                 thumb.addEventListener('click', () => {
+                     changeSpecImage(index);
+                     startSpecCarousel(); // Reset the interval on manual click
+                 });
+             });
+
+             // Pause on hover, resume on leave
+             carouselContainer.addEventListener('mouseenter', () => clearInterval(specInterval));
+             carouselContainer.addEventListener('mouseleave', startSpecCarousel);
+
+             startSpecCarousel(); // Start the carousel initially
+
+             // --- NEW: Staggered Fade-in for Spec List ---
+             const specList = document.getElementById('spec-list');
+             const specItems = document.querySelectorAll('.spec-item');
+
+             const specObserver = new IntersectionObserver((entries, observer) => {
+                 entries.forEach(entry => {
+                     if (entry.isIntersecting) {
+                         specItems.forEach((item, index) => {
+                             setTimeout(() => {
+                                 item.classList.remove('opacity-0', 'translate-y-5');
+                             }, index * 150); // 150ms delay between items
+                         });
+                         observer.unobserve(entry.target); // Animate only once
+                     }
+                 });
+             }, { threshold: 0.5 });
+
+             if (specList) specObserver.observe(specList);
+        });
+    </script>
 </body>
 </html>

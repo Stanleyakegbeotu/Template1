@@ -541,42 +541,6 @@
             window.addEventListener('click', tryToPlay);
             window.addEventListener('scroll', tryToPlay, { passive: true });
         }
-        // --- NEW: Floating Cart Button Logic ---
-        function setupFloatingCartButton() {
-            const floatingBtn = document.getElementById('floating-cart-btn');
-            const finalFormSection = document.getElementById('final-order-form-section');
-            let isBackToTopMode = false;
-
-            if (!floatingBtn || !finalFormSection) return;
-
-            // Click handler
-            floatingBtn.addEventListener('click', () => {
-                if (isBackToTopMode) {
-                    // Scroll to top
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                } else {
-                    // Scroll to final order form
-                    finalFormSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-            });
-
-            // Observer to change button function
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        floatingBtn.innerHTML = '⬆️';
-                        floatingBtn.title = 'Back to Top';
-                        isBackToTopMode = true;
-                    } else {
-                        floatingBtn.innerHTML = '🛒';
-                        floatingBtn.title = 'Go to Order Form';
-                        isBackToTopMode = false;
-                    }
-                });
-            }, { threshold: 0.4 }); // Trigger when 40% of the form is visible
-
-            observer.observe(finalFormSection);
-        }
 
         // --- Init ---
         window.onload = function() {
@@ -587,7 +551,6 @@
             setupSpecCarousel();
             setupSpecFlipCard();
             setupHeroFlipCarousel();
-            setupFloatingCartButton(); // Initialize the new floating button
             rotateAnnouncement();
             startTestimonialCarousel();
 
