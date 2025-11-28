@@ -69,12 +69,12 @@
         ];
         
         const HERO_CAROUSEL_IMAGES = [
-            'P5.webp', 'P2.webp', 'P1.jpg', 'P4.webp', 'G3.webp',
+            'P5.webp', 'P2.webp', 'P1.jpg', 'P4.webp', 'X5.jpg',
         ];
 
         const CAROUSEL_IMAGES = [
-            'G1.webp', 'G2.webp', 'G3.webp', 'G4.webp', 'G5.webp',
-            'G6.webp', 'G7.webp', 'G8.webp', 
+            'X1.webp', 'X2.webp', 'X3.webp', 'X4.jpg', 'X6.jpg',
+            'X7.jpg', 'X8.jpg', 'X9.jpg', 'X10.jpg', 'X11.jpg', 'X12.jpg',  'X13.jpg',  'X14.webp',  'X15.webp',
         ];
 
 
