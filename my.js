@@ -63,9 +63,9 @@
 
         // Adapted package names and prices from the source site
         const OFFERS = [
-            { id: 'standard1', promo: 'Buy 1 Unit', price: 120000, original: 150000, savings: 30000, description: 'Get one portable solar generator with 1 bulb attached, plus free delivery and payment on delivery.' },
-            { id: 'solar2', promo: 'Buy 2 Units (Best Value)', price: 230000, original: 300000, savings: 70000, description: 'Perfect for home and office. Get two portable solar generators, each with 1 bulb attached, plus free delivery and payment on delivery. Save more!' },
-            { id: 'solar3', promo: 'Buy 3 Units (Family Pack)', price: 340000, original: 450000, savings: 110000, description: 'Power for the whole family or business. Get three portable solar generators, each with 1 bulb attached, plus free delivery and payment on delivery. Maximum savings!' },
+            { id: 'standard1', promo: 'Buy 1 Unit', price: 140000, original: 150000, savings: 10000, description: 'Get one portable solar generator with 1 bulb attached, plus free delivery and payment on delivery.' },
+            { id: 'solar2', promo: 'Buy 2 Units (Best Value)', price: 270000, original: 300000, savings: 30000, description: 'Perfect for home and office. Get two portable solar generators, each with 1 bulb attached, plus free delivery and payment on delivery. Save more!' },
+            { id: 'solar3', promo: 'Buy 3 Units (Family Pack)', price: 400000, original: 450000, savings: 50000, description: 'Power for the whole family or business. Get three portable solar generators, each with 1 bulb attached, plus free delivery and payment on delivery. Maximum savings!' },
         ];
         
         const HERO_CAROUSEL_IMAGES = [
