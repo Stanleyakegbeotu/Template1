@@ -1,3 +1,7 @@
+media:
+  input: images      # This is where the CMS looks for images
+  output: images     # This is where it saves new uploads
+  public_url: /images # This is the path used in your HTML
 # .pagescms.yml
 content:
   - name: settings
