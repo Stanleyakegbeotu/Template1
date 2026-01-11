@@ -22,3 +22,4 @@ content:
         fields:
           - { name: "title", label: "Feature Name", type: "string" }
           - { name: "desc", label: "Feature Description", type: "string" }
+

@@ -177,13 +177,52 @@
                     });
                 }
 
+                // Confirmation log when content.json is successfully loaded and applied
+                console.log('content.json loaded', data);
+
+                // Also show a small accessible toast for non-dev users
+                try { if (typeof showContentLoadedToast === 'function') showContentLoadedToast('Content loaded successfully'); } catch (e) { /* swallow */ }
+
             } catch (err) {
                 console.error('loadContent error:', err);
             }
         }
 
-        // Load content.json when the DOM is ready
-        document.addEventListener('DOMContentLoaded', loadContent);
+        // Toast helper functions
+        function showContentLoadedToast(msg = 'Content loaded') {
+            const toast = document.getElementById('content-toast');
+            if (!toast) return;
+            const container = toast.querySelector('.toast-container');
+            const messageEl = toast.querySelector('.toast-message');
+            if (messageEl) messageEl.textContent = msg;
+            toast.classList.remove('hidden');
+            toast.setAttribute('aria-hidden', 'false');
+            // animate in
+            container.classList.remove('opacity-0', 'translate-y-4');
+            container.classList.add('opacity-100', 'translate-y-0');
+            // Auto-hide after 3s
+            clearTimeout(window.__contentToastTimeout);
+            window.__contentToastTimeout = setTimeout(() => hideContentLoadedToast(), 3000);
+        }
+
+        function hideContentLoadedToast() {
+            const toast = document.getElementById('content-toast');
+            if (!toast) return;
+            const container = toast.querySelector('.toast-container');
+            // animate out
+            container.classList.remove('opacity-100', 'translate-y-0');
+            container.classList.add('opacity-0', 'translate-y-4');
+            toast.setAttribute('aria-hidden', 'true');
+            clearTimeout(window.__contentToastTimeout);
+            setTimeout(() => { toast.classList.add('hidden'); }, 350);
+        }
+
+        // Attach dismiss handler and call loadContent on DOM ready
+        document.addEventListener('DOMContentLoaded', () => {
+            const dismiss = document.getElementById('content-toast-dismiss');
+            if (dismiss) dismiss.addEventListener('click', hideContentLoadedToast);
+            loadContent();
+        });
 
         let currentCarouselIndex = 0;
         let carouselInterval = null; // To hold the interval for auto-play

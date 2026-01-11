@@ -565,6 +565,16 @@
         🛒
     </a>
 
+    <!-- Content Loaded Toast (bottom-right) -->
+    <div id="content-toast" class="fixed bottom-6 right-6 z-[200] hidden pointer-events-auto" aria-live="polite" aria-atomic="true" aria-hidden="true">
+        <div class="toast-container bg-green-600 text-white px-4 py-3 rounded-lg shadow-lg flex items-start space-x-3 transition transform opacity-0 translate-y-4" role="status">
+            <div class="flex-1">
+                <p class="font-semibold toast-title">Content Updated</p>
+                <p class="text-sm toast-message">Content loaded successfully</p>
+            </div>
+            <button id="content-toast-dismiss" title="Dismiss" class="ml-3 text-white opacity-80 hover:opacity-100 focus:outline-none" aria-label="Dismiss notification">×</button>
+        </div>
+    </div>
 
     <!-- JavaScript Logic -->
     <script src="my.js"></script>
