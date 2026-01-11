@@ -1,0 +1,24 @@
+# .pagescms.yml
+content:
+  - name: settings
+    label: "Website Content"
+    type: file
+    path: "content.json"
+    fields:
+      - { name: "title", label: "Browser Tab Title", type: "string" }
+      - { name: "hero_heading", label: "Main Heading", type: "string" }
+      - { name: "description", label: "Product Description", type: "text" }
+      - { name: "cta_url", label: "Formspree Email Link", type: "string" }
+      
+      # Media Fields
+      - { name: "image", label: "Main Image", type: "image" }
+      - { name: "video", label: "YouTube Video URL", type: "string" }
+      - { name: "audio", label: "Background Music File", type: "file" }
+
+      # The "Repeater" (Duplicate/Delete Sections)
+      - name: "features"
+        label: "Product Features"
+        type: list
+        fields:
+          - { name: "title", label: "Feature Name", type: "string" }
+          - { name: "desc", label: "Feature Description", type: "string" }
