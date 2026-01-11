@@ -24,9 +24,10 @@
     <div id="cta-bar-wrapper" class="sticky top-[40px] w-full bg-red-600 p-3 shadow-2xl transition-all duration-300 transform-gpu translate-y-0 z-40">
         <div class="max-w-7xl mx-auto flex justify-between items-center space-x-2 sm:space-x-4">
             <!-- Theme Toggle -->
-            <button id="theme-toggle" class="text-white hover:text-yellow-300 p-2 rounded-full transition-colors order-3 sm:order-1" onclick="toggleDarkMode()">
+            <button id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode" class="text-white hover:text-yellow-300 p-2 rounded-full transition-colors order-3 sm:order-1" onclick="toggleDarkMode()">
                 <svg id="sun-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                 <svg id="moon-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                <span class="sr-only">Toggle dark mode</span>
             </button>
             
             <!-- Countdown -->
@@ -66,26 +67,31 @@
             </div>
             
             <div class="space-y-6">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-center text-gray-900 leading-tight">
-                    <span class="text-red-600">The SOLUTION:</span> 150W Portable Solar Generator
-                </h2>
+                <h1 id="product-title" class="text-3xl md:text-4xl font-extrabold text-center text-gray-900 leading-tight">
+                    <span id="hero-heading" class="text-red-600"></span>
+                </h1>
+                <p id="product-description" class="text-xl text-center text-gray-600 leading-relaxed"></p>
                 <p class="text-xl text-center text-gray-600 leading-relaxed">
-                    Tired of spending on fuel and dealing with NEPA failures? This is your ticket to <span class="font-bold text-gray-900">nonstop, affordable, and silent power</span> for your home, shop, or office! <br>
                     <span class="bg-yellow-200 px-2 py-1 rounded-md border-l-4 text-gray-900 border-yellow-500 block mt-2 font-semibold">Get it Today at Promo Price: ₦140,000 + FREE Delivery!</span>
                 </p>
                 <!-- Key Features List adapted from the source site -->
-                <ul class="space-y-3 text-lg text-center  bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                    <li class="flex items-center justify-center"><span class="text-green-500 mr-3 text-xl">⚡</span> Powers TV, Fan, Laptop, Phones, and Bulbs.</li>
-                    <li class="flex items-center justify-center"><span class="text-green-500 mr-3 text-xl">🔇</span> 100% Silent - No more generator noise!</li>
-                    <li class="flex items-center justify-center"><span class="text-green-500 mr-3 text-xl">⛽</span> Zero Fuel Cost - Recharge with Solar or NEPA.</li>
-                    <li class="flex items-center justify-center"><span class="text-green-500 mr-3 text-xl">🔋</span> Strong & Long-Lasting Built-in Battery.</li>
-                    <li class="flex items-center justify-center"><span class="text-green-500 mr-3 text-xl">🛡️</span> 6 Safety Features for device protection.</li>
+                <ul id="features-container" class="space-y-3 text-lg text-center bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <!-- Feature items will be injected here via `content.json` -->
                 </ul>
+                <template id="feature-template">
+                    <li class="flex items-center justify-center">
+                        <span class="text-green-500 mr-3 text-xl">⚡</span>
+                        <div>
+                            <div class="font-bold feature-title"></div>
+                            <div class="feature-desc"></div>
+                        </div>
+                    </li>
+                </template>
                 <div class="text-center pt-4">
-                    <button class="btn-pulse w-full max-w-sm bg-red-600 text-white font-bold py-4 rounded-xl text-xl shadow-xl hover:bg-red-700 transition-colors mx-auto block" onclick="openModal('hero-section')">
-                        👉 Yes, Solve My Power Problems!
-                    </button>
-                </div>
+                    <a id="cta-link" href="#" class="btn-pulse w-full max-w-sm bg-red-600 text-white font-bold py-4 rounded-xl text-xl shadow-xl hover:bg-red-700 transition-colors mx-auto block text-center" onclick="openModal('hero-section')">
+                        <span id="cta-button-text">👉 Yes, Solve My Power Problems!</span>
+                    </a>
+                </div> 
             </div>
         </section>
 
@@ -94,7 +100,7 @@
         <section class="py-8 text-center zoom-in-scroll">
             <div class="bg-white p-2 rounded-2xl shadow-xl max-w-3xl mx-auto border-4 border-gray-100">
                 <!-- High-res product shot placeholder -->
-                <img src="MAIN.webp" alt="Solar Generator Ports and Features" class="w-full rounded-lg" onerror="this.src='https://placehold.co/800x400/22c55e/ffffff?text=Solar+Generator+Ports+View'">
+                <img id="hero-image" src="MAIN.webp" alt="Solar Generator Ports and Features" class="w-full rounded-lg" onerror="this.src='https://placehold.co/800x400/22c55e/ffffff?text=Solar+Generator+Ports+View'">
             </div>
             <h2 class="text-3xl font-extrabold text-gray-900 my-6">See The Generator In Action</h2>
             <!-- 3D Flip Card Carousel -->
@@ -131,11 +137,13 @@
         <section class="py-12 text-center reveal-on-scroll">
             <h2 class="text-2xl font-bold text-gray-900 mb-6">Watch the Video Below! ⚠️</h2>
             <div class="relative w-full max-w-4xl mx-auto aspect-video rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-black">
-                <video id="product-video" class="w-full h-full" controls poster="P3.webp" preload="metadata">
+                <video id="product-video" title="Product demo video" class="w-full h-full" controls poster="P3.webp" preload="metadata">
                     <source src="VV1.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
+                <iframe id="promo-video" title="Promotional video" class="w-full h-full hidden" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
+            <audio id="bg-audio" src="" preload="auto" class="hidden"></audio>
             <p class="text-center text-sm text-red-500 mt-4">Imagine never worrying about NEPA taking light during family time or business hours!😯</p>
         </section>
 
@@ -192,6 +200,12 @@
             <div id="testimonial-cards" class="grid md:grid-cols-3 gap-6 min-h-[220px]">
                 <!-- Testimonials will be dynamically inserted here by JavaScript -->
             </div>
+            <template id="testimonial-template">
+                <div class="testimonial-card bg-white p-6 rounded-2xl shadow-lg border-t-4 border-yellow-500 flex flex-col justify-between">
+                    <p class="italic text-gray-700 mb-4 testimonial-text"></p>
+                    <p class="font-bold text-gray-900 testimonial-author"></p>
+                </div>
+            </template>
             <!-- NEW: Live Stats Section -->
             <div class="mt-12 bg-white p-8 rounded-2xl shadow-xl max-w-4xl mx-auto border reveal-on-scroll">
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
@@ -338,27 +352,27 @@
                 <!-- Summary inserted by JS -->
             </p>
             
-            <form id="form-2-submission" action="https://formspree.io/f/mdkrggaq" method="POST" class="max-w-2xl mx-auto space-y-6">
+            <form id="contact-form" action="https://formspree.io/f/mdkrggaq" method="POST" class="max-w-2xl mx-auto space-y-6">
                 <input type="hidden" name="Source" value="Final Section Form">
                 <input type="hidden" name="Package_Selected" id="form-2-quantity-id">
                 <input type="hidden" name="Price_Total" id="form-2-price-total">
 
                 <div class="grid md:grid-cols-2 gap-6">
                     <div>
-                        <label class="block text-sm font-bold text-gray-700 mb-2">Full Name*</label>
-                        <input type="text" name="Full Name" required class="w-full border-black rounded-lg shadow-md p-3 focus:ring-red-500 focus:border-red-500 bg-gray-50">
+                        <label for="contact-fullname" class="block text-sm font-bold text-gray-700 mb-2">Full Name*</label>
+                        <input id="contact-fullname" type="text" name="Full Name" required placeholder="Full Name" title="Full Name" class="w-full border-black rounded-lg shadow-md p-3 focus:ring-red-500 focus:border-red-500 bg-gray-50">
                     </div>
                     <div>
-                        <label class="block text-sm font-bold text-gray-700 mb-2">WhatsApp Number*</label>
-                        <input type="tel" name="WhatsApp Number" required class="w-full border-black rounded-lg shadow-md p-3 focus:ring-red-500 focus:border-red-500 bg-gray-50" placeholder="080 XXXX XXXX">
+                        <label for="contact-whatsapp" class="block text-sm font-bold text-gray-700 mb-2">WhatsApp Number*</label>
+                        <input id="contact-whatsapp" type="tel" name="WhatsApp Number" required title="WhatsApp Number" class="w-full border-black rounded-lg shadow-md p-3 focus:ring-red-500 focus:border-red-500 bg-gray-50" placeholder="080 XXXX XXXX">
                     </div>
                     <div>
-                        <label class="block text-sm font-bold text-gray-700 mb-2">Alternative Number (Optional)</label>
-                        <input type="tel" name="Alternative Number" class="w-full border-black rounded-lg shadow-md p-3 focus:ring-red-500 focus:border-red-500 bg-gray-50" placeholder="Optional">
+                        <label for="contact-alt-number" class="block text-sm font-bold text-gray-700 mb-2">Alternative Number (Optional)</label>
+                        <input id="contact-alt-number" type="tel" name="Alternative Number" title="Alternative Number" class="w-full border-black rounded-lg shadow-md p-3 focus:ring-red-500 focus:border-red-500 bg-gray-50" placeholder="Optional">
                     </div>
                     <div>
-                        <label class="block text-sm font-bold text-gray-700 mb-2">Delivery State*</label>
-                        <select name="Delivery State" required id="form-2-state-dropdown" class="w-full border-black rounded-lg shadow-md p-3 focus:ring-red-500 focus:border-red-500 bg-gray-50">
+                        <label for="form-2-state-dropdown" class="block text-sm font-bold text-gray-700 mb-2">Delivery State*</label>
+                        <select name="Delivery State" required id="form-2-state-dropdown" title="Delivery State" aria-label="Delivery State" class="w-full border-black rounded-lg shadow-md p-3 focus:ring-red-500 focus:border-red-500 bg-gray-50">
                             <!-- States will be populated by JS -->
                         </select>
                     </div>
@@ -478,10 +492,10 @@
                     <h4 class="text-lg font-bold text-gray-900 pt-3">2. Shipping Details</h4>
 
                     <div class="grid md:grid-cols-2 gap-4">
-                        <input type="text" name="Full Name" required placeholder="Full Name" class="w-full border-black rounded-lg p-3 shadow-md">
-                        <input type="tel" name="WhatsApp Number" required placeholder="Phone Number" class="w-full border-black rounded-lg p-3 shadow-md">
-                        <input type="tel" name="Alternative Number" placeholder="Alternative Number (Optional)" class="w-full border-black rounded-lg p-3 shadow-md">
-                        <select name="Delivery State" required id="form-1-state-dropdown" class="w-full border-black rounded-lg p-3 shadow-md">
+                        <input id="modal-fullname" aria-label="Full Name" title="Full Name" type="text" name="Full Name" required placeholder="Full Name" class="w-full border-black rounded-lg p-3 shadow-md">
+                        <input id="modal-whatsapp" aria-label="WhatsApp Number" title="WhatsApp Number" type="tel" name="WhatsApp Number" required placeholder="Phone Number" class="w-full border-black rounded-lg p-3 shadow-md">
+                        <input id="modal-alt-number" aria-label="Alternative Number" title="Alternative Number" type="tel" name="Alternative Number" placeholder="Alternative Number (Optional)" class="w-full border-black rounded-lg p-3 shadow-md">
+                        <select name="Delivery State" required id="form-1-state-dropdown" title="Delivery State" aria-label="Delivery State" class="w-full border-black rounded-lg p-3 shadow-md">
                             <!-- States will be populated by JS -->
                         </select>
                     </div>

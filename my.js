@@ -101,6 +101,90 @@
             { text: "If you dey find solution for this light problem, abeg, look no further. This solar generator na the real deal. E worth every penny.", author: "- Ibrahim G. (Sokoto)" },
         ];
 
+        async function loadContent() {
+            try {
+                const resp = await fetch('content.json');
+                if (!resp.ok) throw new Error('Failed to fetch content.json');
+                const data = await resp.json();
+
+                // Title/text updates
+                if (data.title) document.title = data.title;
+                const productTitleEl = document.getElementById('product-title');
+                if (productTitleEl) productTitleEl.textContent = data.title || productTitleEl.textContent;
+
+                const heroHeading = document.getElementById('hero-heading');
+                if (heroHeading) heroHeading.textContent = data.hero_heading || heroHeading.textContent;
+
+                const desc = document.getElementById('product-description');
+                if (desc) desc.textContent = data.description || desc.textContent;
+
+                const ctaText = document.getElementById('cta-button-text');
+                if (ctaText) ctaText.textContent = data.cta_text || ctaText.textContent;
+
+                // Links and form
+                const ctaLink = document.getElementById('cta-link');
+                if (ctaLink && data.cta_url) ctaLink.href = data.cta_url;
+
+                const contactForm = document.getElementById('contact-form');
+                if (contactForm && data.cta_url) contactForm.action = data.cta_url;
+
+                // Media
+                const heroImg = document.getElementById('hero-image');
+                if (heroImg && data.media && data.media.image) heroImg.src = data.media.image;
+
+                const promoVideo = document.getElementById('promo-video');
+                if (promoVideo && data.media && data.media.video) {
+                    // Accept either full iframe URL or embed URL
+                    promoVideo.src = data.media.video;
+                    promoVideo.classList.remove('hidden');
+                    const nativeVideo = document.getElementById('product-video');
+                    if (nativeVideo) nativeVideo.classList.add('hidden');
+                }
+
+                const bgAudio = document.getElementById('bg-audio');
+                if (bgAudio && data.media && data.media.audio) bgAudio.src = data.media.audio;
+
+                // Repeater: Features
+                const features = data.features || [];
+                const featuresContainer = document.getElementById('features-container');
+                const featureTemplate = document.getElementById('feature-template');
+                if (featuresContainer && featureTemplate) {
+                    featuresContainer.innerHTML = '';
+                    features.forEach(f => {
+                        const node = featureTemplate.content.cloneNode(true);
+                        const t = node.querySelector('.feature-title');
+                        const d = node.querySelector('.feature-desc');
+                        if (t) t.textContent = f.title || '';
+                        if (d) d.textContent = f.desc || '';
+                        featuresContainer.appendChild(node);
+                    });
+                }
+
+                // Repeater: Testimonials (falls back to static TESTIMONIALS if JSON doesn't provide any)
+                const testimonials = data.testimonials || [];
+                const testimonialContainer = document.getElementById('testimonial-cards');
+                const testimonialTemplate = document.getElementById('testimonial-template');
+                if (testimonialContainer && testimonialTemplate) {
+                    testimonialContainer.innerHTML = '';
+                    const list = testimonials.length ? testimonials : TESTIMONIALS;
+                    list.forEach(item => {
+                        const node = testimonialTemplate.content.cloneNode(true);
+                        const tText = node.querySelector('.testimonial-text');
+                        const tAuthor = node.querySelector('.testimonial-author');
+                        if (tText) tText.textContent = item.text || '';
+                        if (tAuthor) tAuthor.textContent = item.author || '';
+                        testimonialContainer.appendChild(node);
+                    });
+                }
+
+            } catch (err) {
+                console.error('loadContent error:', err);
+            }
+        }
+
+        // Load content.json when the DOM is ready
+        document.addEventListener('DOMContentLoaded', loadContent);
+
         let currentCarouselIndex = 0;
         let carouselInterval = null; // To hold the interval for auto-play
 
@@ -622,7 +706,7 @@
             };
             
             document.getElementById('form-1-submission').addEventListener('submit', handleFormSubmission);
-            document.getElementById('form-2-submission').addEventListener('submit', handleFormSubmission);
+            document.getElementById('contact-form').addEventListener('submit', handleFormSubmission);
 
             // --- NEW: Review Form Submission Logic ---
             document.getElementById('review-form').addEventListener('submit', (e) => {

@@ -1,0 +1,16 @@
+{
+  "title": "Default Product Name",
+  "hero_heading": "Transform Your Life Today",
+  "description": "This is where your product details go.",
+  "cta_text": "Buy Now",
+  "cta_url": "https://formspree.io/f/your-id",
+  "media": {
+    "image": "images/hero.jpg",
+    "video": "https://www.youtube.com/embed/example",
+    "audio": "audio/music.mp3"
+  },
+  "features": [
+    { "title": "Feature 1", "desc": "High quality material." },
+    { "title": "Feature 2", "desc": "24/7 Support." }
+  ]
+}
