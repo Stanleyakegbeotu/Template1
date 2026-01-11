@@ -1,29 +1,27 @@
 media:
-  input: images      # This is where the CMS looks for images
-  output: images     # This is where it saves new uploads
-  public_url: /images # This is the path used in your HTML
-# .pagescms.yml
+  input: images
+  output: images
+
 content:
   - name: settings
-    label: "Website Content"
+    label: "Edit Sales Page"
     type: file
     path: "content.json"
     fields:
-      - { name: "title", label: "Browser Tab Title", type: "string" }
-      - { name: "hero_heading", label: "Main Heading", type: "string" }
-      - { name: "description", label: "Product Description", type: "text" }
-      - { name: "cta_url", label: "Formspree Email Link", type: "string" }
-      
-      # Media Fields
-      - { name: "image", label: "Main Image", type: "image" }
-      - { name: "video", label: "YouTube Video URL", type: "string" }
-      - { name: "audio", label: "Background Music File", type: "file" }
-
-      # The "Repeater" (Duplicate/Delete Sections)
-      - name: "features"
-        label: "Product Features"
-        type: list
+      # Grouping makes it feel like an element selector
+      - label: "--- SECTION 1: TOP BANNER ---"
+        type: object
         fields:
-          - { name: "title", label: "Feature Name", type: "string" }
-          - { name: "desc", label: "Feature Description", type: "string" }
+          - { name: "hero_heading", label: "Main Heading Text", type: "string" }
+          - { name: "image", label: "Hero Background Image", type: "image" }
 
+      - label: "--- SECTION 2: PRODUCT DETAILS ---"
+        type: object
+        fields:
+          - { name: "description", label: "Long Description", type: "text" }
+          - { name: "video", label: "YouTube Video Link", type: "string" }
+
+      - label: "--- SECTION 3: PRICING & BUTTON ---"
+        type: object
+        fields:
+          - { name: "cta_url", label: "Formspree Link", type: "string" }
